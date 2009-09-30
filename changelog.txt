@@ -1,0 +1,79 @@
+
+BootZilla v5.2 Changelog
+-*  Designates an update or bugfix.
+- Designates a removal
++   Designates an addition.
+*~* Designates a design change.
+-----------------------------------
+
+BootZilla v5.2 Build 090929 - Final
+-* Updated index.html file to reflect final release changes
+-* Updated CCleaner to v2.24
+-* Updated createdirs.cmd to no longer create ViewPointKiller directory.
+-* Updated Sanitize scripts (update scripts are included)
+-* Updated PCdecrapifier to v2.1.0
+*** Tested on Windows 7
+ 
+
+
+BootZilla v5.2 Build 090915 - Beta 1
+-* Updated SFXPatch with updated file locations
+-* Moved over all missing files from old bhtproject site to new bootzilla site
+-* Updated CPU-Z to version 1.52
+- Removed GPU-Z (CPU-Z now covers GPU's)
+-* Updated CCleaner to version 2.23 + all additional cleaning ini's
+-* Updated JavaRa to latest version
+-* Updated PureRa to version 1.4
+-* Updated MalwareBytes AntiMalware to version 1.40
+-* Updated utorrent to version 1.8.4
+-* Updated Firefox to version 3.5.3 (9/9/09 release)
+-* Updated various parts of all batch scripts -
+  ** Reduced files included with devtools package
+-* Updated mdy variable to later date to ensure updates get applied.
+-* Updated index.html to reflect BETA status of version 5.2
+-* Changed css style to be more light and easy on the eyes. Probably not final.
+--- Removed a few things here and there ---
+- Removed Windows Defender SFX creator from SFXPatch
+- Removed RogueRemover SFX creator from SFXPatch (Program no longer maintained)
+-* Disabled bootCD building until new bootCD is compiled.
++ Implemented previously-disabled bz_addonpacks function in BZUpdate
+  + bz_addons.cmd, bz_addons_upd.cmd are supported in scripting now.
+  !! Notice: There's no error checking. You provide the scripts, and files. !!
+*~* Finally added a more complete errorlevel checking system to the scripts. 
+
+*** Version 5.2 is now a required update since bhtproject.org is no longer
+maintained, and the files have disappeared (at least, to the end user). ***
+
+--------
+Previous versions:
+
+BootZilla v5.1 Build 090531 FINAL RELEASE
+-* Updated CPU-Z to version 1.51
+-* Updated GPU-Z to version 0.3.4
+-* Updated CCleaner to version 2.20
+-* Updated TestDisk and Photorec to version 6.11.3
+-* Updated SFXPatch2.cmd to fix a few problems
++ Added new Autorun Application
++ Added new BootZilla icon.
+-* Went back to using jkdefrag for defragging the BZ subdirectory.
+-* Changed "64" Option to "x64", to make it easier to figure out what it means
+-* Re-Wrote Readme file to be more clear and concise
+-* Tweaked BuildPackages.cmd to move old patch files to old_x.y files.
++ Added ImgBurn to all release packages, so ISO's can easily be burned.
++ Added burning functionality to bootCD build function
+-* Fixed Windows Defender SFX creation
+
+NOTE: CGT v2.0 is in development now. Once finished, it will complement
+a patch for BootZilla 5.1.
+
+
+Older patchnotes are no longer relevent to version 5.1+, and have been removed 
+for ease of reading.
+___________________________________
+This project uses GPL-Licensed code:
+7-Zip provided by http://7-zip.org
+WGET provided by http://www.christopherlewis.com/WGet/WGetFiles.htm
+A copy of the GPL License is included in the root directory of BootZilla.
+___________________________________
+In no way is BootZilla affiliated with BootZilla Productions, or Bootsy Collins. 
+BHT, BHTproject, BootZilla, BootZilla.org are (C)2004-2009 by Jim "jimmsta" Gall. 
