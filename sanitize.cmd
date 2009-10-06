@@ -71,7 +71,7 @@ if exist %u%\cpuz_152.zip del %u%\cpuz_152.zip&&%log% cpuz_152.zip|%ncr%
 if exist %u%\regscanner.zip del %u%\regscanner.zip&&%log% regscanner.zip|%ncr%
 if exist %u%\erunt.zip del %u%\erunt.zip&&%log% erunt.zip|%ncr%
 if exist %u%\keyfinder.2.0.6.zip del %u%\keyfinder.2.0.6.zip&&%log% keyfinder.2.0.6.zip|%ncr%
-::
+if exist %u%\ViewPointKiller\*.* del /F /S /Q %u%\ViewPointKiller\&&rmdir %u%\ViewPointKiller
 :: if exist %BZ%\autorun.inf del %BZ%\autorun.inf&&%log% autorun.inf|%ncr%
 if exist %cgt%\*.* del /F /S /Q %cgt%\
 :: Finish sanitizing the toolkit

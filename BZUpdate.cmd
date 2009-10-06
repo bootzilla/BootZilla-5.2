@@ -13,16 +13,17 @@ set _cd=%cd%
 :: If a new patch is installed, this is set to 1. If not, it is null.
 set _npatch=
 :: Is this an internal version of BZ?
-set _isinternal=0
+set _isinternal=1
 :: bz_options function uses this variable to determine menu choices
 set _opt=
 :: Variable for setting WGET Retries.
 set _retries=3
-:: This actually sets up the wg constant/variable below.
-set wg=wget -N -t %_retries%
+:: This actually sets up the wg constant with options for the wget executable.
+set wg=wget -N -a=bzlog.log -t %_retries%
 :: set local variables
-set bzver=5.2&set build=090929&set buildstat=Final
+set bzver=5.2&set build=091006&set buildstat=Final
 :: Set the build date of the files included, so that the new bz_upd code functions properly.
+:: This also means that the updates for previous build numbers will be merged into commonupd.cmd (not definite)
 set mdy=/D:08-31-2009
 :: Set the root working directory as well as all other directories as variables.
 set bzroot="BZ"&set util="BZ\Utils"&set mal="BZ\Malware"&set app="BZ\Apps"&set upd="updates"&set NT64=0
@@ -45,7 +46,7 @@ set _bootcd=
 cls
 echo ***********************************
 echo  BootZilla v%bzver%-%build% %buildstat%
-if %_isinternal%==1 echo INTERNAL BUILD. DO NOT DISTRIBUTE
+if %_isinternal%==1 echo INTERNAL BUILD. DO NOT DISTRIBUTE^!
 echo  www.bootzilla.org                                
 echo ***********************************
 echo [O] BootZilla Update Options
@@ -58,10 +59,10 @@ echo [3] Quick-Update BootZilla              ~5MB
 echo -                       
 echo [4] Build BootZilla Boot CD             12MB
 echo -                                  
-echo [5] Clean out Old Programs       
+echo [5] Clean out old files       
 echo [6] Read Changelog             -------------
-echo [AO] Run bz_addonpacks           User-Addons
-echo -
+::echo [AO] Run bz_addonpacks           User-Addons
+echo.
 echo                               Press ENTER to exit                                         
 set /p _task=What would you like to do:
 
@@ -73,7 +74,7 @@ if "%_task%" == "4" set _bootcd=1&&goto bz_boot
 if "%_task%" == "5" goto bz_finisher
 if "%_task%" == "6" goto bz_readlog
 if "%_task%" == "O" goto bz_options
-if "%_task%" == "AO" goto bz_addonpacks
+:: if "%_task%" == "AO" goto bz_addonpacks
 :: if "%_task%" == "U" goto bz_upgrade
 
 goto bz_menu
@@ -163,7 +164,7 @@ echo www.bootzilla.org
 echo by jimmsta
 echo *****************************
 echo.
-echo. Download Process Commencing. This will take a while.
+echo. Download Process Starting - This may take a while.
 :: If 7z.exe is missing, 7z.dll is probably missing too, so we download the latest versions from our repository.
 if not exist 7z.exe %wg% http://www.bootzilla.org/5x/7z/7z.exe&&%wg% http://www.bootzilla.org/5x/7z/7z.dll&&%wg% http://www.bootzilla.org/5x/7z/7zS.sfx&&%log% Downloaded 7zip|%ncr%
 :: if exist %u%\sysinternals\autoruns.exe del /f/s/q %u%\sysinternals\*.*&&%log% Removed old sysinternals tools|%ncr%
@@ -198,14 +199,15 @@ if not exist 7z.exe %wg% http://www.bootzilla.org/5x/7z/7z.exe&&%wg% http://www.
 :: Now we move the contents of BZ\updates\staging into the BZ folder, overwriting older files only.
 xcopy %mdy% /S /Y %upd%\staging\*.* %CD%
 :: And now, we make sure that the staging folder is clear of any remaining files
-if exist %upd%\staging\BZUpdate.cmd del /F /S /Q %upd%\staging\*.*
+if exist %upd%\staging\BZUpdate.cmd del /F /S /Q updates\staging\*.*
 :: Sometimes, there randomly appears to be a second staging directory, so here's some code to fix that.
 if exist %upd%\staging\staging\nul set extst=1&&%log% Extra staging directory found|%ncr%
-if extst=1 del /F /S /Q %upd%\staging\staging\*.*&&rmdir %upd%\staging\staging&&%log% Deleted extra staging directory|%ncr%
+if extst==1 del /F /S /Q %upd%\staging\staging\*.*&&rmdir %upd%\staging\staging&&%log% Deleted extra staging directory|%ncr%
 :: Now we tell the user to select Option 1 at the re-start of the script.
 echo.
-echo Select Option 1 once script re-starts.
+echo To continue updating, select Option 1 at the menu.
 echo.
+echo Restarting Script...
 pause
 :: %log% BootZilla v%bzver%-%build% Installed. Now restarting script...|%ncr%
 set _npatch=1&&goto bz_menu
@@ -250,9 +252,14 @@ goto bz_menu
 :bz_cleanupd
 :: CleanUpdate - Updates the local build of BootZilla with all the latest updates.
 :: Cleans out all old files, and is custom-tailored to the version of BZ that currently resides on the machine.
-:: If the build is older than 080701, we set the build variable passed to the script as the 080701 build number.
-if %build% LEQ "080701" set build=080701
-:: This is supposed to support v4.2.6 fine, as well as all v4.3.00 development versions.
+:: Slightly Re-written for version 5.2
+:: This is supposed to support v4.2.6 fine, as well as all v4.3.00 development versions, v5.0, 5.1, and released 5.2 builds equally.
+:: If the build is older than 090915, we call Oldupds.cmd which cleans all builds from 4.2.7 thru 5.2 debug.
+if %build% LEQ "090915" call %upd%\Oldupds.cmd
+:: If the build is older than 080802, execute a 4.2.6 to 5.0 conversion script.
+if %build% LEQ "080802" call %upd%\bz4to5.cmd
+:: If the build variable set is older than 090915, set the build to 090915 and continue.
+if %build% LEQ "090915" set build=090915
 call %upd%\CommonUpd.cmd
 call %upd%\%build%.cmd
 goto bz_menu
@@ -287,16 +294,12 @@ xcopy /E /Y /H /I BZ "CGT/BZ"
 :: This is included with all v5.1 releases, so we're not going to download it, but extract it into the CGT Directory.
 :: 7z.exe -y x bzar5.7z -oCGT
 echo.
-mkisofs.exe -N -J -joliet-long -D -V "BootZilla_%build%" -o ./BZ-%build%.iso -b "isolinux.bin" -no-emul-boot -boot-load-size 4 -boot-info-table CGT/
-%log% BootCD ISO has been created.|%ncr%
-%log% ISO Name: BZ-%build%.iso|%ncr%
-cls
+echo Now Launching ImgBurn to Burn CD or Create Image File...
 echo.
-echo BZ-%build%.iso has been created in %_cd%.
+imgburn.exe /portable /MODE BUILD /OUTPUTMODE DEVICE /ROOTFOLDER YES /VERIFY NO /CLOSESUCCESS /SRC "bootzilla.ibb"
 echo.
-echo Starting Cd Burning Software...
-echo.
-imgburn.exe /portable /SRC BZ-%build%.iso /VERIFY NO /MODE WRITE /SPEED MAX /START /WAITFORMEDIA
+IF %ERRORLEVEL%==0 echo Image Burned Successfully.
+pause
 goto bz_menu
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

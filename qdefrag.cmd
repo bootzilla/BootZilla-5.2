@@ -1,8 +1,10 @@
-﻿@echo off
+﻿
+@echo off
 cls
-:: qUick Defrag for BootZilla
+setlocal
+echo.
+:: QDefrag for BootZilla
 :: by Jim "jimmsta" Gall
-:: February 26th, 2009
 :: Defragments all BZ files after building BootZilla
 ::
 echo.
@@ -12,3 +14,4 @@ echo.
 echo Press CTRL-C to quit
 echo.
 jkdefragcmd.exe -a3 %CD%\BZ\
+endlocal

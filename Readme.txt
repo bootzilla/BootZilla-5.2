@@ -1,23 +1,32 @@
-﻿BootZilla v5.2
-September 2009
-bootzilla.org
-by Jim "jimmsta" Gall
+﻿
+
+ BootZilla v5.2
+ October 2009
+ bootzilla.org
+ by Jim "jimmsta" Gall
 
 NOTE: Read this document entirely, before using BootZilla.
 
 Benefits of v5.2 over v5.1:
-Updated Tools
-Improved BootCD functionality 
-Minor improvements in build scripts
 
+*Updated Tools 
+	-> New locations for files, since bhtproject is no more.
+
+*Improved BootCD functionality -> 
+	Updated with all the latest bootable utilities
+	All Image creation/Cd burning is done with ImgBurn!
+	
+*Minor improvements in build and update scripts
+	-> Properly converts v4.2.6 into v5.2!
+
+	
 Quick-Start: Run BZUpdate.cmd to get BootZilla updated, or built. 
+
 PROTIP: READ THE TEXT! Follow the prompts.
 
 What is BootZilla? 
 BootZilla is a handpicked set of tools that can help  any computer user or tech
 in removing and cleaning up after malware infections.
-  
-BootZilla v5.2 is based on BootZilla v5.1, which was the last major release.
 
 How do I build BootZilla?
 
@@ -46,6 +55,7 @@ If you find BootZilla to be very useful, why not donate a cent or two to benefit
 ***
 
 ©2004-2009 by Jim "jimmsta" Gall, ©2008-2009 BootZilla.org.
+BootZilla code is available thru http://www.github.com/bootzilla/
 
 BZUpdate and the html files are licensed under the CC Attribution 3.0 License.
 A copy of the license is is located in the root folder of BootZilla. 

@@ -7,6 +7,8 @@ color F1
 set _retries=3
 set wg=wget -N -t %_retries%
 echo.
+%wg% http://www2.gmer.net/gmer.zip -P BZ/Malware/
+IF %ERRORLEVEL%==1(%log% gmer.zip failed to download|%ncr%)
 %wg% http://www.bootzilla.org/5x/mal/HijackThis2_sfx.exe -P BZ/Malware/
 IF %ERRORLEVEL%==1(%log% HijackThis2_sfx.exe failed to download|%ncr%)
 %wg% http://www.bootzilla.org/5x/mal/SpybotSD_SFX.exe -P BZ/Malware/

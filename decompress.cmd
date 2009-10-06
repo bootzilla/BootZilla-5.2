@@ -11,6 +11,10 @@ echo * www.bootzilla.org           *
 echo *******************************
 echo.
 echo Decompressing and Patching files. Please wait.
+:: Decompress Mal-Utils
+echo.
+echo Decompressing Malware Utilities...
+if exist BZ/Malware/gmer.zip 7z -y x BZ/Malware/gmer.zip -oBZ/Malware/
 :: Decompress Utils
 echo.
 echo Decompressing Archived Utilities...

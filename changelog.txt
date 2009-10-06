@@ -6,15 +6,31 @@ BootZilla v5.2 Changelog
 *~* Designates a design change.
 -----------------------------------
 
-BootZilla v5.2 Build 090929 - Final
+BootZilla v5.2 Build 091006 - Final
 -* Updated index.html file to reflect final release changes
 -* Updated CCleaner to v2.24
 -* Updated createdirs.cmd to no longer create ViewPointKiller directory.
 -* Updated Sanitize scripts (update scripts are included)
 -* Updated PCdecrapifier to v2.1.0
 *** Tested on Windows 7
- 
-
+*~* AddonPacks functionality is integrated, but it is disabled in the menu. If you need/want it, enable it.
+-* Made some of the prompts in the script more user-friendly.
+-* Merged all old update files into a single update file. Altered update code to support versions 
+of BootZilla from 4.2.6 thru 5.2 Beta. This was an important change.
+   -* Created a bz4to5.cmd, which converts a BootZilla 4.x to a basic 5.0 clean directory.
+-* Updated ImgBurn to version 2.5, and included License into buildpackage.cmd
+-- Removed BootZilla AutoRun from minilatest. It goes against the reason for minilatest.
++ Added GMER rootkit scanner/remover to bz_mal.
++ Added link to Microsoft Security Essentials free Antivirus in index.html. 
+  I'm not about to serve multiple files for multiple platforms. Not yet anyway (64-bit, maybe)
+*~* Enabled debug logging for wget to append to bzlog.log, if need be (hurr... had no idea it had this ability)
+-* Updated index.html to be more clear on what each tool supports, in terms of Windows versions.
+  + Added Malwarebytes' Anti-Malware back in to index.html.
+  -* Corrected incorrectly written statements and words in index.html.
+*~* Switched all boot cd creation functions to use ImgBurn exclusivley (no more mkisofs+imgburn)
+   + Added BootZilla.ibb file to create uniform BootZilla CD/ISO's automagically.
+  
+- - - - -
 
 BootZilla v5.2 Build 090915 - Beta 1
 -* Updated SFXPatch with updated file locations
