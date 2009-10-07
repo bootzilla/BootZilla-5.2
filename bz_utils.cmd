@@ -31,10 +31,12 @@ IF %ERRORLEVEL%==1(%log% ccleanerSFX.exe failed to download|%ncr%)
 IF %ERRORLEVEL%==1(%log% FSOptimizerSFX.exe failed to download|%ncr%)
 %wg% http://www.bootzilla.org/5x/utils/RevoUninstallerSFX.exe -P BZ/Utils/
 IF %ERRORLEVEL%==1(%log% RevoUninstallerSFX.exe failed to download|%ncr%)
+%wg% http://www.bootzilla.org/5x/utils/MyDefragSFX.exe -P BZ/Utils/
+IF %ERRORLEVEL%==1(%log% MyDefragSFX.exe failed to download|%ncr%)
 %wg% http://www.bootzilla.org/5x/utils/regalyz.exe -P BZ/Utils/
 IF %ERRORLEVEL%==1(%log% regalyz.exe failed to download|%ncr%)
-%wg% http://www.bootzilla.org/5x/utils/pc-decrapifier-2.0.0.exe -P BZ/Utils/
-IF %ERRORLEVEL%==1(%log% pc-decrapifier-2.0.0.exe failed to download|%ncr%)
+%wg% http://www.bootzilla.org/5x/utils/pc-decrapifier-2.1.0.exe -P BZ/Utils/
+IF %ERRORLEVEL%==1(%log% pc-decrapifier-2.1.0.exe failed to download|%ncr%)
 %wg% http://www.bootzilla.org/5x/utils/StartUpLite.exe -P BZ/Utils/
 IF %ERRORLEVEL%==1(%log% StartUpLite.exe failed to download|%ncr%)
 %wg% http://download.mcafee.com/products/licensed/cust_support_patches/MCPR.exe -P BZ/Utils/

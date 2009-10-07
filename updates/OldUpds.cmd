@@ -169,8 +169,8 @@ if exist %a%\7z463.exe del %a%\7z463.exe&&%log% 7z463.exe|%ncr%
 if exist %a%\7z465.exe del %a%\7z464.exe&&%log% 7z464.exe|%ncr%
 if exist %a%\7z459.exe del %a%\7z459.exe&&%log% 7z459.exe|%ncr%
 if exist %u%\GPU-Z.0.3.1.exe del %u%\GPU-Z.0.3.1.exe&&%log% GPU-Z.0.3.1.exe|%ncr%
-if exist %u%\GPU-Z.0.3.2.exe del %h%\GPU-Z.0.3.2.exe&&%log% GPU-Z.0.3.2.exe|%ncr%
-if exist %u%\GPU-Z.0.3.3.exe del %h%\GPU-Z.0.3.3.exe&&%log% GPU-Z.0.3.3.exe|%ncr%
+if exist %u%\GPU-Z.0.3.2.exe del %u%\GPU-Z.0.3.2.exe&&%log% GPU-Z.0.3.2.exe|%ncr%
+if exist %u%\GPU-Z.0.3.3.exe del %u%\GPU-Z.0.3.3.exe&&%log% GPU-Z.0.3.3.exe|%ncr%
 if exist %bzroot%\Utils\PC-Decrapifier-2.0.0.exe del %bzroot%\Utils\PC-Decrapifier-2.0.0.exe&&%log% PC-Decrapifier-2.0.0.exe|%ncr%
 if exist %bzroot%\Utils\PC-Decrapifier-2.0.1.exe del %bzroot%\Utils\PC-Decrapifier-2.0.1.exe&&%log% PC-Decrapifier-2.0.1.exe|%ncr%
 :: MEOW

@@ -21,18 +21,21 @@ IF %ERRORLEVEL%==1(%log% SmitFraudfixSFX.exe failed to download|%ncr%)
 IF %ERRORLEVEL%==1(%log% aimfix.exe failed to download|%ncr%)
 %wg% http://www.bootzilla.org/5x/mal/mbam-setup.exe -P BZ/Malware/
 IF %ERRORLEVEL%==1(%log% mbam-setup.exe failed to download|%ncr%)
-%wg% http://www.bootzilla.org/5x/mal/mbam-rules.exe -P BZ/Malware/
-IF %ERRORLEVEL%==1(%log% mbam-rules.exe failed to download|%ncr%)
 %wg% http://www.bootzilla.org/5x/mal/VundoFix.exe -P BZ/Malware/
 IF %ERRORLEVEL%==1(%log% Backup copy of VundoFix.exe failed to download|%ncr%)
 %wg% http://www.bootzilla.org/5x/mal/spybotsd162.exe -P BZ/Malware/
 IF %ERRORLEVEL%==1(%log% spybotsd162.exe failed to download|%ncr%)
 %wg% http://download.bleepingcomputer.com/sUBs/ComboFix.exe -P BZ/Malware/
 IF %ERRORLEVEL%==1(%log% ComboFix.exe failed to download|%ncr%)
-:: If NT64=1 only get the x64 version, which is at the same url, except it is _nt64_, not _nt32_.
-%wg% http://www.bootzilla.org/5x/mal/eav_nt32_enu.msi -P BZ/Malware/
-if %NT64%==1 %wg% http://www.bootzilla.org/5x/mal/eav_nt64_enu.msi -P BZ/Malware/
-IF %ERRORLEVEL%==1(%log% eav_nt64_enu.msi failed to download|%ncr%)
+%wg% http://www.bootzilla.org/5x/mal/mssefullinstall-x86fre-en-us-xp.exe -P BZ/Malware/
+IF %ERRORLEVEL%==1(%log% mssefullinstall-x86fre-en-us-xp.exe failed to download|%ncr%)
+%wg% http://www.bootzilla.org/5x/mal/mssefullinstall-x86fre-en-us-vista-win7.exe -P BZ/Malware/
+IF %ERRORLEVEL%==1(%log% mssefullinstall-x86fre-en-us-vista-win7.exe failed to download|%ncr%)
+:: If NT64=1 checks to see if the user asked for 64-bit apps or not.
+:: This reduces the download time and size of files needed.
+IF %NT64%==1 %wg% http://www.bootzilla.org/5x/mal/mssefullinstall-amd64fre-en-us-vista-win7.exe -P BZ/Malware/
+IF %ERRORLEVEL%==1(%log% mssefullinstall-amd64fre-en-us-vista-win7.exe failed to download|%ncr%)
+
 :end
 endlocal
 exit

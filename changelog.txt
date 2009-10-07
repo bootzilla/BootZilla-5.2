@@ -6,7 +6,20 @@ BootZilla v5.2 Changelog
 *~* Designates a design change.
 -----------------------------------
 
-BootZilla v5.2 Build 091006 - Final
+BootZilla v5.2 Build 091007 - Final
+-* Fixed bzrelease.zip file creation to make it open properly in every zip application
+*~* Changed designation of build to non-internal
+-* Minor updates to SFXPatch2.
+-- Removed NOD32 antivirus in lieu of Microsoft Security Essentials
+++ Added all versions of Microsoft Security Essentials
++ Added MyDefrag SFX to sfxpatch2.
+-* Updated and corrected bad links in index.html.
+-* Fixed improper download of pc-decrapifier-2.0.0 file in bz_utils.cmd.
+*~* Finalized style-sheet for index.html.
+-* Fixed a few bugs that cropped up in the updates files. Should now clean up all old files properly.
+
+
+BootZilla v5.2 Build 091006 - Final RC
 -* Updated index.html file to reflect final release changes
 -* Updated CCleaner to v2.24
 -* Updated createdirs.cmd to no longer create ViewPointKiller directory.

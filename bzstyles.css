@@ -1,31 +1,28 @@
 	body{
+	padding-left: 2%;
 	font-family: Helvetica, Verdana, Arial, sans-serif;
-	background-color: #d1dcff;
-    color: #3f3f42;
     width:99%;
 	}
     body h1{
-      color: black;
+      color: #2b2b2b;
       width:77%;
     }
     body a {
-    color: #010300;;
     font-family: Verdana, Arial, Helvetica, sans-serif;
     text-decoration: none;
-    background-color: #daffb8;
     font-size: 0.77em;
     }
     body a:hover{
-      color: #262525;
-      background-color: #afff23;
+      color: #437176;
     }
     body p {
     width: 95%;
     background-color:transparent;
     }
 	.category {
-    border-bottom-width: 1px;
-    border-bottom-color: black;
+    background-color: #c7c7c7;
+    padding-left: 5px;
+    border-bottom-width: 2px;
     border-bottom-style: solid;
     padding-top: 3px;
 	width:75%;
@@ -34,14 +31,12 @@
 
     }
     .category a {
-      color: #00426c;
-      font-size:1.077em;
-    }
+    color: #004c82;
+    font-size:1.077em;
+	}
     .category a:hover {
-      color: #030100;
-      background-color: #ccffaa;
+      border-bottom-style: none;
       font-size:1.077em;
-      border-bottom:solid #FF6600 2px;
     }
 	.subcat {
 	width:97%;
@@ -70,4 +65,10 @@
 	font-size:0.33em;
     border-top:solid #000 1px;
     width:50%;
+    }
+
+    .desc {
+    font-family: "Lucida Grande", Verdana, Arial, sans-serif;
+    font-size: 14pt;
+    color: #16416e;
     }

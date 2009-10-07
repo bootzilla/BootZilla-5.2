@@ -13,7 +13,7 @@ set _cd=%cd%
 :: If a new patch is installed, this is set to 1. If not, it is null.
 set _npatch=
 :: Is this an internal version of BZ?
-set _isinternal=1
+set _isinternal=0
 :: bz_options function uses this variable to determine menu choices
 set _opt=
 :: Variable for setting WGET Retries.
@@ -21,7 +21,7 @@ set _retries=3
 :: This actually sets up the wg constant with options for the wget executable.
 set wg=wget -N -a=bzlog.log -t %_retries%
 :: set local variables
-set bzver=5.2&set build=091006&set buildstat=Final
+set bzver=5.2&set build=091007&set buildstat=Final
 :: Set the build date of the files included, so that the new bz_upd code functions properly.
 :: This also means that the updates for previous build numbers will be merged into commonupd.cmd (not definite)
 set mdy=/D:08-31-2009
@@ -259,7 +259,7 @@ if %build% LEQ "090915" call %upd%\Oldupds.cmd
 :: If the build is older than 080802, execute a 4.2.6 to 5.0 conversion script.
 if %build% LEQ "080802" call %upd%\bz4to5.cmd
 :: If the build variable set is older than 090915, set the build to 090915 and continue.
-if %build% LEQ "090915" set build=090915
+if %build% LEQ "090914" set build=090915
 call %upd%\CommonUpd.cmd
 call %upd%\%build%.cmd
 goto bz_menu
@@ -276,11 +276,11 @@ if not exist 7z.exe %wg% http://www.bootzilla.org/5x/7z/7z.exe&&%wg% http://www.
 if not exist 7z.exe goto bz_error
 :: First, we download and extract the latest release of CGT to the CGT subdirectory.
 :: Secondly, we download any available patches for CGT and unzip them
-%wg% http://www.bhtproject.org/library/BHT4x/CGTBoot.7z
+%wg% http://www.bootzilla.org/bcd/CGTBoot.7z
 7z.exe -y x CGTBoot.7z -oCGT -aoa -r
 echo.
 :: Check to see if there's any new patches for CGT, and download them.
-wget -N http://www.bootzilla.org/5x/cgt/CGTpatch.7z
+wget -N http://www.bootzilla.org/bcd/CGTpatch.7z
 7z.exe -y x CGTpatch.7z -oCGT -aoa -r
 echo.
 :: We actually delete any older BZ directories in the CGT directory BEFORE copying BZ to the CGT directory.
@@ -298,7 +298,8 @@ echo Now Launching ImgBurn to Burn CD or Create Image File...
 echo.
 imgburn.exe /portable /MODE BUILD /OUTPUTMODE DEVICE /ROOTFOLDER YES /VERIFY NO /CLOSESUCCESS /SRC "bootzilla.ibb"
 echo.
-IF %ERRORLEVEL%==0 echo Image Burned Successfully.
+IF %ERRORLEVEL%==0 echo Image created or burned successfully.
+echo.
 pause
 goto bz_menu
 

@@ -1,5 +1,9 @@
 :: BootZilla Common Updater
 :: for BootZilla v5.2+
+if exist %bzroot%\Malware\mbam-rules.exe del %bzroot%\Malware\mbam-rules.exe&&%log%mbam-rules.exe|%ncr%
+if exist %bzroot%\Malware\eav_nt32_enu.msi del %bzroot%\Malware\eav_nt32_enu.msi&&%log%eav_nt32_enu.msi|%ncr%
+if exist %bzroot%\Malware\eav_nt64_enu.msi del %bzroot%\Malware\eav_nt64_enu.msi&&%log%eav_nt64_enu.msi|%ncr%
+if exist %bzroot%\Utils\pc-decrapifier-2.0.0.exe del %bzroot%\Utils\pc-decrapifier-2.0.0.exe&&%log% pc-decrapifier-2.0.0.exe|%ncr%
 if exist %bzroot%\index.html del %bzroot%\index.html&&%log% index.html|%ncr%
 if exist %bzroot%\bz.ico del %bzroot%\bz.ico&&%log% bz.ico|%ncr%
 if exist %bzroot%\readme.txt del %bzroot%\readme.txt&&%log% readme.txt|%ncr%

@@ -4,10 +4,10 @@ setlocal
 :: Builds a set of tools and BootZilla packages for deployment
 :: version and build stated below in pkgver and buildv variables.
 :: Updated for v5.2
-set pkgver=2.1
-set buildv=091006
+set pkgver=2.2
+set buildv=091007
 :: frelease variable is the command line to build a FULL Release package <includes 7zip files>
-set frelease=7z.exe a -tzip -md=32m -mfb=64 "bz5release.zip" imgburn.exe bootzilla.ibb jkdefragcmd.exe qdefrag.cmd bzar5.7z selector.cmd bzmultitool.cmd createdirs.cmd 7zsfxmkr31.cmd sfxpatch2.cmd 7zS.sfx devsetup.cmd msvcr71.dll bz_mal.cmd bz_utils.cmd bz_apps.cmd 7z.exe 7z.dll index.html bzstyles.css bz.ico logger.exe nocrlf.exe wget.exe ImgBurnLicenseAgreement.rtf license.txt isolinux.bin Readme.txt decompress.cmd changelog.txt BZUpdate.cmd sanitize.cmd BuildPackage.cmd updates\ updates\*
+set frelease=7z.exe a -tzip "bz5release.zip" imgburn.exe bootzilla.ibb jkdefragcmd.exe qdefrag.cmd bzar5.7z selector.cmd bzmultitool.cmd createdirs.cmd 7zsfxmkr31.cmd sfxpatch2.cmd 7zS.sfx devsetup.cmd msvcr71.dll bz_mal.cmd bz_utils.cmd bz_apps.cmd 7z.exe 7z.dll index.html bzstyles.css bz.ico logger.exe nocrlf.exe wget.exe ImgBurnLicenseAgreement.rtf license.txt isolinux.bin Readme.txt decompress.cmd changelog.txt BZUpdate.cmd sanitize.cmd BuildPackage.cmd updates\ updates\*
 :: patch variable is the command line to build a 7zip minilatest.7z package of necessary bootzilla files
 set patch=7z.exe a -t7z -m0=LZMA -mmt=on -mx9 -md=64m -mfb=64 -ms=on "minilatest.7z" bootzilla.ibb createdirs.cmd bz_mal.cmd bz_utils.cmd bz_apps.cmd index.html bzstyles.css bz.ico Readme.txt decompress.cmd sanitize.cmd BZUpdate.cmd changelog.txt BuildPackage.cmd updates\ updates\*
 :: devtools variable is the command line to build a 7zip compressed devtools.7z package of necessary development bootzilla files
