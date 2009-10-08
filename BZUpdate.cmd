@@ -21,7 +21,7 @@ set _retries=3
 :: This actually sets up the wg constant with options for the wget executable.
 set wg=wget -N -a=bzlog.log -t %_retries%
 :: set local variables
-set bzver=5.2&set build=091007&set buildstat=Final
+set bzver=5.2.0&set build=091007&set buildstat=Final
 :: Set the build date of the files included, so that the new bz_upd code functions properly.
 :: This also means that the updates for previous build numbers will be merged into commonupd.cmd (not definite)
 set mdy=/D:08-31-2009
@@ -276,19 +276,17 @@ if not exist 7z.exe %wg% http://www.bootzilla.org/5x/7z/7z.exe&&%wg% http://www.
 if not exist 7z.exe goto bz_error
 :: First, we download and extract the latest release of CGT to the CGT subdirectory.
 :: Secondly, we download any available patches for CGT and unzip them
-%wg% http://www.bootzilla.org/bcd/CGTBoot.7z
-7z.exe -y x CGTBoot.7z -oCGT -aoa -r
+%wg% http://www.bootzilla.org/bcd/bzbcd.7z
+7z.exe -y x bzbcd.7z -oCGT -aoa -r
 echo.
 :: Check to see if there's any new patches for CGT, and download them.
-wget -N http://www.bootzilla.org/bcd/CGTpatch.7z
-7z.exe -y x CGTpatch.7z -oCGT -aoa -r
+wget -N http://www.bootzilla.org/bcd/bcdpatch.7z
+7z.exe -y x bcdpatch.7z -oCGT -aoa -r
 echo.
 :: We actually delete any older BZ directories in the CGT directory BEFORE copying BZ to the CGT directory.
 echo Copying BootZilla to CGT directory.
 rmdir /Q /S "CGT\BZ\"
 MD "CGT\BZ"
-:: The following isolinux.bin bit is old, and might be obsolete <OBSOLETE?>
-xcopy /E /Y /H /I "CGT/isolinux/isolinux.bin" isolinux.bin
 xcopy /E /Y /H /I BZ "CGT/BZ"
 :: Now we make sure that we have the latest bz autorun app
 :: This is included with all v5.1 releases, so we're not going to download it, but extract it into the CGT Directory.

@@ -6,6 +6,11 @@ BootZilla v5.2 Changelog
 *~* Designates a design change.
 -----------------------------------
 
+BootZilla v5.2.0 Build 091007 HotFix
+*~* Supports new BootCD functionality -
+	Fully re-written bootcd build on UBCD v4.1.1
+	Modified Bootzilla.ibb project for proper bootcd functionality.
+
 BootZilla v5.2 Build 091007 - Final
 -* Fixed bzrelease.zip file creation to make it open properly in every zip application
 *~* Changed designation of build to non-internal
